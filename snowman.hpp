@@ -2,5 +2,5 @@
 using namespace std;
 
 namespace ariel {
-    string snowman(int input);
+    string snowman(int x);
 };
