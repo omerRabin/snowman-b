@@ -4,10 +4,12 @@ using namespace std;
 #include "snowman.hpp"
 
 namespace ariel {
+	const int ten= 10;
 	string convert2hat(int x)
 {
-	int hat = x/10000000;
-	if(hat<1 || hat>4) throw std::out_of_range{"x contains incorrect digits!"}; // check if x contains incorrect digits
+	const int num= 10000000;
+	int hat = x/num;
+	if(hat<1 || hat>4) {throw std::out_of_range{"x contains incorrect digits!"};} // check if x contains incorrect digits
 	switch (hat)
 	{
 	case 1: //first hat
@@ -28,8 +30,9 @@ namespace ariel {
 }
 string convert2nose_mouth(int x)
 {
-	int nose_mouth = (x/1000000)%10;
-	if(nose_mouth<1 || nose_mouth>4) throw std::out_of_range{"x contains incorrect digits!"};
+	const int num= 1000000;
+	int nose_mouth = (x/num)%ten;
+	if(nose_mouth<1 || nose_mouth>4) {throw std::out_of_range{"x contains incorrect digits!"};}
 
 	switch (nose_mouth)
 	{
@@ -51,8 +54,9 @@ string convert2nose_mouth(int x)
 }
 string convert2left_eye(int x)
 {
-	int left_eye = (x/100000)%10;
-	if(left_eye<1 || left_eye>4) throw std::out_of_range{"x contains incorrect digits!"};
+	const int num=100000;
+	int left_eye = (x/num)%ten;
+	if(left_eye<1 || left_eye>4) {throw std::out_of_range{"x contains incorrect digits!"};}
 	switch (left_eye)
 	{
 	case 1: // first left_eye
@@ -74,8 +78,9 @@ string convert2left_eye(int x)
 }
 string convert2right_eye(int x)
 {
-	int right_eye = (x/10000)%10;
-	if(right_eye<1 || right_eye>4) throw std::out_of_range{"x contains incorrect digits!"};
+	const int num=10000;
+	int right_eye = (x/num)%ten;
+	if(right_eye<1 || right_eye>4) {throw std::out_of_range{"x contains incorrect digits!"};}
 	switch (right_eye)
 	{
 	case 1: // first right_eye
@@ -97,8 +102,9 @@ string convert2right_eye(int x)
 }
 string convert2left_arm(int x)
 {
-	int left_arm = (x/1000)%10;
-	if(left_arm<1 || left_arm>4) throw std::out_of_range{"x contains incorrect digits!"};
+	const int num=1000;
+	int left_arm = (x/num)%ten;
+	if(left_arm<1 || left_arm>4){ throw std::out_of_range{"x contains incorrect digits!"};}
 	switch (left_arm)
 	{
 	case 1: // first left_arm
@@ -120,8 +126,9 @@ string convert2left_arm(int x)
 }
 string convert2right_arm(int x)
 {
-	int right_arm = (x/100)%10;
-	if(right_arm<1 || right_arm>4) throw std::out_of_range{"x contains incorrect digits!"};
+	const int num=100;
+	int right_arm = (x/num)%ten;
+	if(right_arm<1 || right_arm>4){ throw std::out_of_range{"x contains incorrect digits!"};}
 	switch (right_arm)
 	{
 	case 1: // first right_arm
@@ -143,8 +150,8 @@ string convert2right_arm(int x)
 }
 string convert2torso(int x)
 {
-	int torso = (x/10)%10;
-	if(torso<1 || torso>4) throw std::out_of_range{"x contains incorrect digits!"};
+	int torso = (x/ten)%ten;
+	if(torso<1 || torso>4){ throw std::out_of_range{"x contains incorrect digits!"};}
 	switch (torso)
 	{
 	case 1: // first torso
@@ -166,8 +173,8 @@ string convert2torso(int x)
 }
 string convert2base(int x)
 {
-	int base = x%10;
-	if(base<1 || base>4) throw std::out_of_range{"x contains incorrect digits!"};
+	int base = x%ten;
+	if(base<1 || base>4) {throw std::out_of_range{"x contains incorrect digits!"};}
 	switch (base)
 	{
 	case 1: // first base
@@ -189,9 +196,13 @@ string convert2base(int x)
 }
 
 string snowman(int x) {
-	if(x<=0) throw std::out_of_range{"x must be positive!"}; // check if x is negative or 0
-	if(x/10000000 ==0 || x/100000000!=0) throw std::out_of_range{"incorrent length for x!"}; // check if x length incorrect
-	string snowman="";
+	const int num1=10000000;
+	const int num2=100000000;
+	if(x<=0) {
+		throw std::out_of_range{"x must be positive!"}; // check if x is negative or 0
+	}
+	if(x/num1 ==0 || x/num2!=0) {throw std::out_of_range{"incorrent length for x!"};} // check if x length incorrect
+	string snowman;
 	// use functions to build the snow man items
 		string hat= convert2hat(x);
 		string nose_mouth= convert2nose_mouth(x);
